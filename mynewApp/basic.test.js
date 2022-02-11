@@ -1,3 +1,4 @@
 it('Testing to see if Jest works', () => {
     expect(1).toBe(1)
+    expect(1).toBe(1)
 })
