@@ -1,0 +1,61 @@
+js is synchronous single threaded lang
+hoisting assign a space to variable
+lexial connection with parents variable
+closure a function reference to its lexial env is closure
+
+var is function scope
+let and const are block scope
+
+let a =10
+var b = 10
+const c =10
+{
+let a =20
+}
+
+
+
+script 
+ a=10
+ c=10
+
+block
+ a=20
+
+global
+ b=10
+
+
+
+
+
+callstack
+event loop
+call back queue
+micro task queue
+
+
+higher order function map filter reduce
+
+polyfill means proto type similar to Array.prototype or array._proto_._proto_
+
+call apply bind
+
+curry by using bind or closures
+
+bubbling(hitting six) and capture 
+
+event delegation(reducing click events using bubblinga and capture)
+Benefits of event delegation:
+1) improves memory space
+2) mitigates risk of performance bottle neck
+3) Dom manipulation
+4) when elements get added dynamically, the process of adding events is slow
+Limitations:
+1) All the events are not bubbled up, some events like blur, focus are not bubbled up
+2) if e.stopPropogation is used in child, then events are not bubbled up
+
+
+
+debouncing(search engine reducing api calls in network)
+
