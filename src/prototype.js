@@ -197,3 +197,14 @@ https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascrip
 https://stackoverflow.com/questions/4508313/advantages-of-using-prototype-vs-defining-methods-straight-in-the-constructor
 https://stackoverflow.com/questions/572897/how-does-javascript-prototype-work
 */
+
+
+
+
+
+
+
+const newPrototype = {};
+const newObject = Object.create(newPrototype);
+
+console.log(Object.getPrototypeOf(newObject) === newPrototype); // true

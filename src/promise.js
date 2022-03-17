@@ -16,3 +16,32 @@ squareRoot(10)
     .catch((err) => {
         console.log(err);
     })
+
+
+
+
+const promise = new Promise(resolve => {
+    setTimeout(() => {
+        resolve("I'm a Promise!");
+    }, 5000);
+}, reject => {
+
+});
+
+promise.then(value => console.log(value));
+
+
+
+
+
+
+
+import { Observable } from 'rxjs';
+
+const observable = new Observable(observer => {
+    setTimeout(() => {
+        observer.next('Message from a Observable!');
+    }, 3000);
+});
+
+observable.subscribe(value => console.log(value));

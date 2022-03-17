@@ -15,109 +15,188 @@ this in the constructor function now refer to the object created in the first st
 
 */
 
-function Circle(radius) {
-    this.radius = radius;
-}
+// function Circle(radius) {
+//     this.radius = radius;
+// }
+//
+// Circle.prototype.getRadius = function () {
+//     return this.radius;
+// }
+//
+// Circle.prototype.getDiameter = function () {
+//     return 2 * this.radius;
+// }
+//
+// Circle.prototype.getCircumference = function () {
+//     return 2 * Math.PI * this.radius;
+// }
+//
+// Circle.prototype.getArea = function () {
+//     return 2 * Math.PI * this.radius * this.radius;
+// }
+//
+// let circle = new Circle(2);
+// // let circle = Circle(2); // throw error
+// console.log("circle", circle);
+// console.log("radius", circle.getRadius());
+// console.log("diameter", circle.getDiameter());
+// console.log("circumference", circle.getCircumference());
+// console.log("area", circle.getArea());
 
-Circle.prototype.getRadius = function () {
-    return this.radius;
-}
 
-Circle.prototype.getDiameter = function () {
-    return 2 * this.radius;
-}
 
-Circle.prototype.getCircumference = function () {
-    return 2 * Math.PI * this.radius;
-}
 
-Circle.prototype.getArea = function () {
-    return 2 * Math.PI * this.radius * this.radius;
-}
 
-let circle = new Circle(2);
 
-console.log("circle", circle);
-console.log("radius", circle.getRadius());
-console.log("diameter", circle.getDiameter());
-console.log("circumference", circle.getCircumference());
-console.log("area", circle.getArea());
 
-//factory method of creating object
-function circleFactory(radius) {
-    return {
-        radius: radius,
-        getDiameter: function () {
-            return 2 * this.radius;
-        },
-        getArea: function () {
-            return 2 * Math.PI * this.radius;
-        },
-        getCircumference: function () {
-            return 2 * this.radius;
-        }
-    }
-}
+// //factory method of creating object
+// function circleFactory(radius) {
+//     return {
+//         radius: radius*2,
+//         getDiameter: function () {
+//             return 2 * this.radius;
+//         },
+//         getArea: function () {
+//             return 2 * Math.PI * this.radius;
+//         },
+//         getCircumference: function () {
+//             return 2 * this.radius;
+//         }
+//     }
+// }
+//
+// let circle2 = circleFactory(2);
+// console.log("circle", circle2);
+// console.log("diameter", circle2.getDiameter());
+// console.log("circumference", circle2.getCircumference());
+// console.log("area", circle2.getArea());
 
-let circle2 = circleFactory(2);
-console.log("circle", circle2);
-console.log("radius", circle2.getRadius());
-console.log("diameter", circle2.getDiameter());
-console.log("circumference", circle2.getCircumference());
-console.log("area", circle2.getArea());
+
+
+
+
 
 
 // callable and constructable
 
-function isConstructor(f) {
-    try {
-        new f();
-    } catch (err) {
-        if (err.message.indexOf('is not a constructor') >= 0) {
-            return false;
-        }
-    }
-    return true;
-}
+// function isConstructor(f) {
+//     try {
+//         new f();
+//     } catch (err) {
+//         if (err.message.indexOf('is not a constructor') >= 0) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+//
+// function test(f, name) {
+//     console.log(`${name} is constructable: ${isConstructor(f)}`);
+// }
+//
+// function foo() { }
+// test(foo, 'function declaration');
+// test(function () { }, 'function expression');
+// test(() => { }, 'arrow function');
+//
+// class Foo { }
+// test(Foo, 'class declaration');
+// test(class { }, 'class expression');
+//
+// test({ foo() { } }.foo, 'object method');
+//
+// class Foo2 {
+//     static bar() { }
+//     bar() { }
+// }
+// test(Foo2.bar, 'static class method');
+// test(new Foo2().bar, 'class method');
+//
+// test(new Function(), 'new Function()');
 
-function test(f, name) {
-    console.log(`${name} is constructable: ${isConstructor(f)}`);
-}
 
-function foo() { }
-test(foo, 'function declaration');
-test(function () { }, 'function expression');
-test(() => { }, 'arrow function');
 
-class Foo { }
-test(Foo, 'class declaration');
-test(class { }, 'class expression');
 
-test({ foo() { } }.foo, 'object method');
 
-class Foo2 {
-    static bar() { }
-    bar() { }
-}
-test(Foo2.bar, 'static class method');
-test(new Foo2().bar, 'class method');
-
-test(new Function(), 'new Function()');
 
 
 //exmaples
-function foo() {
-    this.a = 1;
+// function foo() {
+//     this.a = 1;
+// }
+
+// foo();  // using function as a regular function. Ctx is window.
+// console.log(this, this.a);  // prints "1"
+// foo.call(this);  // explicitly specify execution ctx. The same as just foo() call
+//
+// var instance = new foo();  // using foo as a constructor
+// console.log(instance.a);   // prints "1"
+
+
+// var variable = foo();
+// console.log(variable.a);   //throw error
+//
+// // actually you can do it without new keyword
+// var instance = {};  // manually create new object
+// foo.call(instance); // manually call foo against this object
+// console.log(instance);   // prints "1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+Classes:
+
+    const user = new User(); // ReferenceError
+
+class User {}
+Constructor Function:
+
+    const user = new User(); // No error
+
+function User() {
 }
 
-foo();  // using function as a regular function. Ctx is window.
-console.log(this, this.a);  // prints "1"
-foo.call(this);  // explicitly specify execution ctx. The same as just foo() call
 
-var instance = new foo();  // using foo as a constructor
-console.log(instance.a);   // prints "1"
 
-// actually you can do it without new keyword
-var instance = {};  // manually create new object
-foo.call(instance); // manually call foo against this object
-console.log(instance.a);   // prints "1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Vehicle {
+    constructor(name) {
+        this.name = name;
+    }
+
+    start() {
+        console.log(`${this.name} vehicle started`);
+    }
+}
+
+class Car extends Vehicle {
+    start() {
+        console.log(`${this.name} car started`);
+        super.start();
+    }
+}
+
+const car = new Car('BMW');
+console.log(car.start());
