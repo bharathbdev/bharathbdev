@@ -4,7 +4,9 @@
 </em></p>
 
 
-[![Linkedin: Bharath](https://img.shields.io/badge/-thaianebraga-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/bharath-b-61763a18a/)](https://www.linkedin.com/in/bharath-b-61763a18a/
+
+
+[![Linkedin: thaianebraga](https://img.shields.io/badge/-bharath-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/bharath-b-61763a18a/)](https://www.linkedin.com/in/bharath-b-61763a18a/)
 [![GitHub Bharath](https://img.shields.io/github/followers/bharath?label=follow&style=social)](https://github.com/bharathbdev)
 
 
