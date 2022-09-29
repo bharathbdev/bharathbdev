@@ -208,3 +208,63 @@ const newPrototype = {};
 const newObject = Object.create(newPrototype);
 
 console.log(Object.getPrototypeOf(newObject) === newPrototype); // true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Create an empty constructor function
+function Person(){
+    this.notModify = ['god1']
+}
+
+
+
+
+//Add property name, age to the prototype property of the Person constructor function
+Person.prototype.name = "Ashwin" ;
+Person.prototype.age = 26;
+Person.prototype.friends = ['Jadeja', 'Vijay'],//Arrays are of reference type in JavaScript
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    }
+
+//Create objects using the Person constructor function
+var person1= new Person();
+var person2 = new Person();
+
+console.log( "is it same ", Person.prototype === person1.__proto__ )
+console.log( "is it same proto ",person1.__proto__ === person2.__proto__)
+
+console.log( "is it same proto sayName ",person1.__proto__.sayName === person2.__proto__.sayName)
+console.log( "is it same proto friends ",person1.__proto__.friends === person2.__proto__.friends)
+console.log( "is it same proto notModify ",person1.__proto__.notModify === person2.__proto__.notModify)
+console.log( "is it same proto notModify directly ",person1.notModify === person2.notModify)
+console.log( "is it same proto notModify directly",person1.__proto__.notModify)
+//Add a new element to the friends array
+person1.friends.push("Amit");
+person1.name = "god"
+person1.notModify.push("1")
+console.log(person1.name)
+console.log(person2.name)
+console.log(person1.friends);// Output: "Jadeja, Vijay, Amit"
+console.log(person2.friends);// Output: "Jadeja, Vijay, Amit
+console.log(person1.notModify);
+console.log(person2.notModify);

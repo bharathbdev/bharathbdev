@@ -112,3 +112,28 @@
 //         console.log(i, arr[i], arr.length);
 //     }, i *1000);
 // }
+
+
+//
+// function myColour(){
+//     colour = 'blue'
+//
+// }
+// myColour()
+// console.log(colour)
+
+
+
+// function color(){
+//     if(true){
+//         var color1= 'red';
+//         const color2 = 'green';
+//         let color3 = 'blue';
+//
+//     }
+//     console.log(color1);  // red
+//     console.log(color2);  //  ReferenceError: color is not defined
+//     console.log(color3);  //  ReferenceError: fruit2 is not defined
+// }
+//
+// color();
