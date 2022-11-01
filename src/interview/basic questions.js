@@ -413,3 +413,119 @@ int main ()
 
     return 0;
 }
+
+
+const arrObj = [
+    { age: 10, name: 'A', class: 5},
+    { age: 12, name: 'B', class: 5},
+    { age: 10, name: 'C', class: 5},
+    { age: 12, name: 'D', class: 6},
+    { age: 11, name: 'E', class: 6},
+    { age: 12, name: 'F', class: 7}
+]
+let output = {
+    '5': { '10': [ 'A', 'C' ], '12': [ 'B' ] },
+    '6': { '11': [ 'E' ], '12': [ 'D' ] },
+    '7': { '12': [ 'F' ] }
+}
+
+let tempArr = []
+for(let el of arrObj){
+    if(tempArr.find((el2)=>{
+        return el2.key === el.class
+    })){
+        let index = tempArr.findIndex((ell)=>
+        {
+            return ell.key === el.class
+        })
+        tempArr[index].values.push(el)
+    }
+    else{
+        let temp = {
+            values: []
+        }
+        temp.key = el.class
+        temp.values.push(el)
+        tempArr.push(temp)
+    }
+}
+
+let result ={}
+for(let el of tempArr){
+    result[el.key]= el.values
+}
+//console.log(result)
+
+
+let final = {}
+for(let mainEl in result) {
+
+    let tempArr = []
+    for (let el of result[mainEl]) {
+        if (tempArr.find((el2) => {
+            return el2.key === el.age
+        })) {
+            let index = tempArr.findIndex((ell) => {
+                return ell.key === el.age
+            })
+            tempArr[index].values.push(el.name)
+        } else {
+            let temp = {
+                values: []
+            }
+            temp.key = el.age
+            temp.values.push(el.name)
+            tempArr.push(temp)
+        }
+    }
+    let result2 ={}
+    for(let el of tempArr){
+        result2[el.key]= el.values
+    }
+
+    final[mainEl] = result2
+}
+console.log(final)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let a = data = {
+    records: [
+        {
+            "empid": 1,
+            "fname": "X",
+            "lname": "Y"    },
+        {
+            "empid": 2,
+            "fname": "B",
+            "lname": "Y"    },
+        {
+            "empid": 3,
+            "fname": "A",
+            "lname": "Y"    }, {
+            "empid": 4,
+            "fname": "C",
+            "lname": "Y"
+        }, {
+            "empid": 5,
+            "fname": "X",
+            "lname": "Y"
+        }]
+};
+
+data.records.sort((a,b)=>{
+    return a.fname.toUpperCase().charCodeAt(0)-b.fname.toUpperCase().charCodeAt(0)
+
+})
+console.log(data.records)

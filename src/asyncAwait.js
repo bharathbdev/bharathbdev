@@ -49,3 +49,16 @@ console.log(func());
 function func() {
     return Promise.resolve(10).then(() => undefined)
 }
+
+
+
+
+
+async function foo(name) {
+    console.log(name, "start");
+    await console.log(name, "middle");
+    console.log(name, "end");
+}
+
+foo("First");
+foo("Second");
