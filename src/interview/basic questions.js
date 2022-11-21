@@ -529,3 +529,28 @@ data.records.sort((a,b)=>{
 
 })
 console.log(data.records)
+
+
+
+function mutate(arr) {
+
+    let indexOut = 0
+    do {
+        if (arr[indexOut]) {
+            indexOut++
+        } else {
+            arr.splice(indexOut, 0, 0)
+            indexOut = indexOut +2
+        }
+
+    } while (indexOut && indexOut !== arr.length)
+    return arr
+}
+let array = [0,1]
+let res = mutate(array)
+console.log(res)
+
+
+
+let arr =[1,4,3,0,9,0]
+let output = [1,4,3,0,0,9,0,0]

@@ -6,6 +6,16 @@
 //     }, 3000)
 // }
 //
+
+
+
+// const arr = [1, 2, 3, 4]
+//
+// for (var i = 0; i < 4; i++) {
+//     setTimeout( ()=> {
+//         console.log(arr[i]);
+//     }, 3000)
+// }
 //
 //console.log("" + 1 + 0);
 //console.log(1 + 0 + "");
