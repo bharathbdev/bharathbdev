@@ -10,7 +10,7 @@ console.log("max-call", Math.max.call(null, ...numbers));
 let bindMax = Math.max.bind(null, ...numbers);
 console.log("max-bind", bindMax());
 
-
+// https://duncan-mcardle.medium.com/call-apply-and-bind-in-javascript-437b3eb015ba
 
 
 
