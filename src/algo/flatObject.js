@@ -105,3 +105,25 @@ function flattenMultiArray(arr) {
 }
 const multiDimensionalArr = [11, [22, 33], [44, [55, 66, [77, [88]], 99]]];
 const flatArr = flattenMultiArray(multiDimensionalArr); // [11, 22, 33, 44, 55, 66, 77, 88, 99]
+
+
+
+
+
+var flat = function (arr, n) {
+    if (n === 0) {
+        return arr;
+    }
+
+    let answer = [];
+
+    arr.forEach(element => {
+        if (Array.isArray(element)) {
+            answer.push(...flat(element, n - 1));
+        } else {
+            answer.push(element);
+        }
+    });
+
+    return answer;
+};

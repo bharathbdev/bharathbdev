@@ -68,3 +68,4 @@ let god =getTopRatedFoodOutlets("Houston")
 console.log(god)
 
 
+//difference between foreach and for is, in foreach we can pass callback function and break it
