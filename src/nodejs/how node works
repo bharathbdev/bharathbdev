@@ -1,0 +1,35 @@
+request1(sync)
+request2(async like db call api timetake)
+
+          
+
+  eventqueue
+      request2 request1
+                                        
+                                             eventloop                                            threadpool(libuv)
+
+                                                                                                  t1 t2 t3 t4
+
+
+
+                      call stack(single thread)
+                      request1                                         t1(request2)                                                                  db request2
+                      request2                                                                                                                               callback2
+                                                                                       
+
+
+                                                callbackqueue/macrotaskqueue
+                                                callback2  callback3  settimeout setimmediate
+                                                
+
+                                                microtaskqueue
+                                               promise1 observable1 api call
+
+
+
+
+
+
+                     callback2  
+
+  
