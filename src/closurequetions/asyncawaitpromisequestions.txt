@@ -1,0 +1,154 @@
+Bro take the assignment try it
+print the output as displayed in console
+1using callback
+
+
+
+
+
+function A( callback ) {
+	setTimeout( () => {
+        callback("result of a()");
+    }, 1000 ); // 1 second delay
+}
+function B( callback ) {
+	setTimeout( () => {
+        callback("result of b()");
+    }, 2000 ); // 2 second delay
+}
+
+
+
+
+
+
+output
+"callbackA", "result of a()"
+"callbackB", "result of b()"
+
+
+
+
+
+
+
+
+2 
+using await
+
+
+
+const a = () => new Promise( resolve => {
+    setTimeout( () => resolve( 'result of a()' ), 1000 ); // 1s delay
+} );
+
+const b = () => new Promise( resolve => {
+    setTimeout( () => resolve( 'result of b()' ), 2000 ); // 2s delay
+} );
+
+
+output
+"awaita", "result of a()"
+"awaitb", "result of b()"
+
+
+
+
+
+
+
+3
+uisng promise then
+
+
+
+const a = () => new Promise( resolve => {
+    setTimeout( () => resolve( 'result of a()' ), 1000 ); // 1s delay
+} );
+
+const b = () => new Promise( resolve => {
+    setTimeout( () => resolve( 'result of b()' ), 2000 ); // 2s delay
+} );
+
+
+
+
+output
+"promisea", "result of a()"
+"promiseb", "result of b()"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 combine all of them output should be 
+
+
+   4a
+
+"awaita", "result of a()"
+"awaitb", "result of b()"
+"callbackA", "result of a()"
+"callbackB", "result of b()"
+"promisea", "result of a()"
+"promiseb", "result of b()"
+
+
+
+  4b
+
+"callbackA", "result of a()"
+"callbackB", "result of b()"
+"awaita", "result of a()"
+"awaitb", "result of b()"
+"promisea", "result of a()"
+"promiseb", "result of b()"
+
+
+
+
+4c
+"promisea", "result of a()"
+"promiseb", "result of b()"
+"callbackA", "result of a()"
+"callbackB", "result of b()"
+"awaita", "result of a()"
+"awaitb", "result of b()"
+
+
+
+4d
+
+"callbackA", "result of a()"
+"callbackB", "result of b()"
+"promisea", "result of a()"
+"promiseb", "result of b()"
+"awaita", "result of a()"
+"awaitb", "result of b()"
+
+
+4e
+
+
+"promisea", "result of a()"
+"promiseb", "result of b()"
+"awaita", "result of a()"
+"awaitb", "result of b()"
+"callbackA", "result of a()"
+"callbackB", "result of b()"
+
+
+
+all possible comination output
+4 questions I want the expected output 
+try it really it will fun😁 suggestion before trying just read about callback async await and promise
