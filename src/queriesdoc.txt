@@ -1,0 +1,459 @@
+>db.testtable.find({age : {$gt : 22}}).pretty();
+>db.testtable.find({age : {$lt :24, $gt : 17}}).pretty();
+>db.testtable.find({age : {$ne :19}})
+
+
+{
+        "age":2,
+        "interest" : "MUSIC",
+        "batch" : 2, 
+        "quantity" : [ 179, 185, 180 ],
+        "description" : [
+                {
+                        "agegroup" : "3-5",
+                        "flavour" : "pineapple",
+                        "price" : 5
+                }
+         ],
+        "tran_details" : [
+                {
+                        "qty" : 200,
+                        "prate" : 50,
+                        "mrp" : 70
+                },
+                {
+                        "qty" : 250,
+                        "prate" : 50,
+                        "mrp" : 60
+                },
+                {
+                        "qty" : 190,
+                        "prate" : 55,
+                        "mrp" : 75
+                }
+        ],
+        "extra" : {
+                "community_name" : [
+                        "MODERN MUSIC",
+                        "CLASSICAL MUSIC",
+                        "WESTERN MUSIC"
+                ],
+                "community_members" : [
+                        2500,
+                        2200,
+                        3500
+                ]
+                
+        }
+}
+>db.testtable.find({"extra.community_name" : {$ne : "MODERN MUSIC"}})
+>db.testtable.find({"extra.community_name" : {$nin : ["MODERN MUSIC","janal"]}})
+>db.testtable.find({"age" : { $in : [19,20,22,25]}})
+>db.student.find({$and:[{"sex":"Male"},{"grd_point":{ $gte: 31 }}]}).pretty();
+>db.student.find({"sex":"Male","grd_point":{ $gte: 31}).pretty();
+>db.student.find( {"age": { $not: {$lt : 12}}}).pretty();
+>db.testtable.find({$or : [{"age" : 19},{"age" : 22}]})
+>db.testtable.find( { "date_of_join" : "16/10/2010" , $or : [{"age" : 19},{"age" : 22}] } )
+>db.student.find({$and:[{"date_of_join" : "16/10/2010"},{$or : [{"age" : 19},{"age" : 22}]}).pretty();
+>db.testtable.find( { "date_of_join" : "16/10/2010" , $nor : [{"age" : 19},{"age" : 22}] } )
+>db.testtable.find({"extra.community_name" : { $exists : true } } ).pretty();
+>db.testtable.find({"extra.friends" : {$type : 3}}).pretty()
+>db.testtable.find({"age" : {$mod : [8,0]}}).pretty();
+
+
+>db.student.find( { f_name: { $regex: 'p.*', $options: 'i' } } ).pretty();
+>db.student.find( { f_name: /p/i } ).pretty();
+>db.student.find( { f_name: /P/ } ).pretty();
+>db.student.find( { f_name: /^p/i } ).pretty();
+{"name": /.*Reg.*/},
+
+>db.table3.find( { $where: function() { return (this.english == this.science) }}).pretty();
+>db.testtable.find({"extra.community_members" : {$all : [5000,2000,1500]}}).pretty();
+
+{
+        "_id" : ObjectId("5285bd8a8154c4747b705b51"),
+        "item_code" : "I003",
+        "description" : [
+                {
+                        "agegroup" : "3-5",
+                        "flavour" : "pineapple",
+                        "price" : 5
+                }
+         ]
+}
+>db.table1.find( { "description": { $elemMatch: { "agegroup" : "10-13","price":{$gte:7}}}}).pretty();
+>db.table1.find( { "description.agegroup": "10-13"},{"description.price":{$gte:7}}}}).pretty();
+>db.testtable.find({"extra.community_name" : {$size : 3}}).pretty();
+>db.testtable.find({"extra.community_name" : {$size : 3}}).sort({"age":-1}).pretty();
+> db.testtable.find( { batch: 1, quantity: { $gte: 180 } },{ "quantity.$": 1 } ). pretty();
+>db.testtable.find( { "description.price": { $gt: 200 }},{ "description.$": 1 }).sort( { "description.flavour": 1 } ).pretty();
+> db.testtable.find({ batch: 10452 },{ tran_details: { $elemMatch: { prate: 50 }}}).sort({"tran_details.qty":1}).pretty();
+>db.testtable.find({"batch":2}, { "quantity": { $slice: [3,2]}}).pretty();
+
+
+
+
+
+
+
+> db.items.update( { "item_id": "I001" }, { $inc: { "tax%": 2 } }, { multi: true } );
+> db.employee.update( { emp_id: 1232 }, { $rename: { "personal.empfname": "personal.fname"} } );
+>db.employeeset.update( { "sector":{$gte:2} },{ $set: {"block": "E"}},{multi : true});
+>db.items1.update({ _id: 1 },{ $setOnInsert: {"description":"item1", "op_stock": 100 } },{ upsert: true });
+>db.items1.update({ _id: 1 },{ $setOnInsert: {"op_stock": 200,"description":"item2" },$set: {"purqty": 100}},{ upsert:  true });
+>db.items1.update({"op_stock":{$gte:100}}, { $unset: {"purqty": ""}},{ multi: true });
+ { "_id" : 1, "sem" : 1, "achieve" : [  70,  87,  90 ] }
+> db.student.update( { "sem": 1}, { $addToSet: { "achieve":{$each:[10,11]}}});
+> db.student.update( {achieve: 70 }, { $pop: { achieve : -1 } } );
+> db.student.update( { "subjects" : "gkn" }, { $pull: { "achieve":{$gte :85} }});
+> db.student.update( { "subjects" : "gkn" }, { $pullAll: { "achieve": [65,87,90] }} );
+> db.student.update( { "subjects" : "gkn" },{ $push: { "achieve": {$each : [77,49,83 ]} } });
+
+
+
+{
+        "_id" : ObjectId("5542003c65713ddc838b2dc8"),
+        "emp_code" : "E006",
+        "emp_name" : "Karlos Mint",
+        "date_of_join" : "23/05/2010",
+        "salary" : 12000,
+        "deduction" : {
+                "pf" : 3000,
+                "pt" : 300,
+                "it" : 400
+        }
+}
+
+> db.empdetails.aggregate( [ { $project: { "deduction.pf": 1 } } ] );
+or 
+db.empdetails.aggregate( [ { $project: { deduction: { pf: 1 } } } ] );
+> db.empdetails.aggregate(
+...    [
+...       {
+...          $project: {
+...             emp_code: 1,
+...             date_of_join: {
+...                day: { $substr: [ "$date_of_join", 0, 2 ] },
+...                month: { $substr: [ "$date_of_join", 3, 2 ] },
+...                year: { $substr: [ "$date_of_join", 6, 4 ] },
+...               },
+...             PF: "$deduction.pf",
+...             Salary: "$salary"
+...          }
+...       }
+...    ]
+... );
+
+> db.empdetails.aggregate(  [ { $match : { salary : 9000 } } ] ).pretty();
+
+
+
+{
+        "_id" : ObjectId("55432b302a8be1f2a41b9464"),
+        "title" : "Department Report of 456",
+        "tags" : [
+                "MM",
+                "KKLT"
+        ],
+        "year" : 2013,
+        "subsections" : [
+                {
+                        "subtitle" : "Overview : Section 1",
+                        "tags" : [
+                                "PJ",
+                                "MM"
+                        ],
+                        "content" : "Section 1: This is the content of section 1."
+                },
+                {
+                        "subtitle" : "Section 2: Placement",
+                        "tags" : [
+                                "KKLT"
+                        ],
+                        "content" : "Section 2: This is the content of section 2."
+                },
+                {
+                        "subtitle" : "Section 3: Projection",
+                        "tags" : [
+                                "FS"
+                        ],
+                        "content" : {
+                                "text" : "Section 3: This is the content of section3.",
+                                "tags" : [
+                                        "LTS"
+                                ]
+                        }
+                }
+        ]
+}
+
+
+
+var userAccess = [ "MM", "KKLT" ];
+db.testdate.aggregate(
+   [
+     { $match: { year: 2013 } },
+     { $redact: {
+        $cond: {
+           if: { $gt: [ { $size: { $setIntersection: [ "$tags", userAccess ] } }, 0 ] },
+           then: "$$DESCEND",
+           else: "$$PRUNE"
+         }
+       }
+     }
+   ]
+);
+
+
+
+{
+        "_id" : 1,
+        "shirt" : "Half Sleeve",
+        "sizes" : [
+                "medium",
+                "XL",
+                "free"
+        ]
+}
+> db.test1.aggregate( [ { $unwind : "$sizes" } ] );
+
+
+
+{
+        "_id" : 1,
+        "item" : "doz",
+        "qty" : 20,
+        "rate" : 10,
+        "inv_date" : "02/02/2014"
+}
+{
+        "_id" : 2,
+        "item" : "sam",
+        "qty" : 15,
+        "rate" : 8,
+        "inv_date" : "05/12/2014"
+}
+{
+        "_id" : 3,
+        "item" : "amp",
+        "qty" : 25,
+        "rate" : 8,
+        "inv_date" : "07/02/2014"
+}
+{
+        "_id" : 4,
+        "item" : "doz",
+        "qty" : 20,
+        "rate" : 10,
+        "inv_date" : "02/02/2014"
+}
+{
+        "_id" : 5,
+        "item" : "amp",
+        "qty" : 10,
+        "rate" : 8,
+        "inv_date" : "05/12/2014"
+}
+{
+        "_id" : 6,
+        "item" : "doz",
+        "qty" : 30,
+        "rate" : 10,
+        "inv_date" : "13/04/2014"
+}
+{
+        "_id" : 7,
+        "item" : "sam",
+        "qty" : 15,
+        "rate" : 8,
+        "inv_date" : "05/12/2014"
+}
+{
+        "_id" : null,
+        "item" : "mks",
+        "qty" : 10,
+        "rate" : 20,
+        "inv_date" : "17/12/2014"
+}
+
+db.invoice.aggregate(
+   [
+      {
+        $group : {_id : "$inv_date",
+           totalCost: { $sum: { $multiply: [ "$rate", "$qty" ] } },
+           avgQty: { $avg: "$qty" },
+           count: { $sum: 1 }
+        }
+     }
+  ]
+).pretty();
+
+
+
+db.invoice.aggregate(
+   [
+      {
+        $group : {_id : {inv_date : "$inv_date",item : "$item"},
+           totalCost: { $sum: { $multiply: [ "$rate", "$qty" ] } },
+           avgQty: { $avg: "$qty" },
+           count: { $sum: 1 }
+        }
+     }
+  ]
+).pretty();
+
+
+db.invoice.aggregate(
+   [
+    { 
+	$match : {inv_date : "05/12/2014"}
+    },
+      {
+        $group : {_id : {inv_date : "$inv_date",item : "$item"},
+           totalCost: { $sum: { $multiply: [ "$rate", "$qty" ] } },
+           avgQty: { $avg: "$qty" },
+           count: { $sum: 1 }
+        }
+     }
+  ]
+).pretty();
+
+
+> db.invoice.aggregate( [ { $group : { _id : "$item" } } ] ).pretty();
+
+db.invoice.aggregate(
+   [
+     { $group : { _id : "$item", invoiceDate: { $push: "$inv_date" } } }
+   ]
+).pretty();
+
+
+
+db.invoice.aggregate( [
+                      { $group : { _id : "$item", invoiceDate: { $push: "$inv_date" } } },
+                      { $out : "newinvoice" }
+                  ] );
+
+
+{ "_id" : 1, "A" : [ "cat", "rat" ], "B" : [ "cat", "rat" ] }
+{ "_id" : 2, "A" : [ "cat", "rat" ], "B" : [ ] }
+{ "_id" : 3, "A" : [ ], "B" : [ "cat" ] }
+{ "_id" : 4, "A" : [ "cat", "rat" ], "B" : [ "rat", "cat", "rat" ] }
+{ "_id" : 5, "A" : [ "cat", "rat" ], "B" : [ "cat", "rat", "dog" ] }
+{ "_id" : 6, "A" : [ "cat", "rat" ], "B" : [ [ "cat", "rat" ] ] }
+{ "_id" : 7, "A" : [ "cat", "rat" ], "B" : [ [ "cat" ], [ "rat" ] ] }
+{ "_id" : 8, "A" : [ ], "B" : [ ] }
+{ "_id" : 9, "A" : [ "cat", "rat" ], "B" : [ "dog", "cat" ] }
+}
+
+
+> db.test_collection.aggregate(
+...    [
+...      { $project: { A: 1, B: 1, sameElements: { $setEquals: [ "$A", "$B" ] }, _id: 0 } }
+...    ]
+... );
+
+> db.test_collection.aggregate(
+...    [
+...      { $project: { A: 1, B: 1, commonToBoth: { $setIntersection: [ "$A", "$B" ] }, _id: 0 } }
+...    ]
+... );
+> db.test_collection.aggregate(
+...    [
+...      { $project: { A:1, B: 1, allValues: { $setUnion: [ "$A", "$B" ] }, _id: 0 } }
+...    ]
+... );
+> db.test_collection.aggregate(
+...    [
+...      { $project: { A: 1, B: 1, inBOnly: { $setDifference: [ "$B", "$A" ] }, _id: 0 } }
+...    ]
+... );
+> db.test_collection.aggregate(
+...    [
+...      { $project: { A:1, B: 1, AisSubset: { $setIsSubset: [ "$A", "$B" ] }, _id:0 } }
+...    ]
+... );
+> db.survey_collection.aggregate(
+...    [
+...      { $project: { replies: 1, isAnyTrue: { $anyElementTrue: [ "$replies" ] }, _id: 0 } }
+...    ]
+... );
+> db.survey_collection.aggregate(
+...    [
+...      { $project: { replies: 1, isAllTrue: { $allElementsTrue: [ "$replies" ] }, _id: 0 } }
+...    ]
+... );
+
+
+>db.testtable.find({"sex":"Male"}).skip(1).count()
+
+
+
+
+
+
+> db.userdetails.insert(document) 
+> db.userdetails.update({"user_id" : "QRSTBWN"},{"user_id" : "QRSTBWN","password" :"NEWPASSWORD" ,"date_of_join" : "17/10/2010" ,"education" :"M.B.A." , "profession" : "MARKETING","interest" : "MUSIC","community_name" :["MODERN MUSIC", "CLASSICAL MUSIC","WESTERN MUSIC"],"community_moder_id" : ["MR. BBB","MR. JJJ","MR MMM"],"community_members" : [500,200,1500],"friends_id" : ["MMM123","NNN123","OOO123"],"ban_friends_id" :["BAN123","BAN456","BAN789"]});
+>db.userdetails.remove( { "user_id" : "testuser" } )
+>db.userdetails.drop()
+>db.dropDatabase()
+db.userdetails.find().sort({"education":1})
+
+
+
+> db.empinfo.ensureIndex( { "emp_id" : 1 } );
+{
+        "createdCollectionAutomatically" : true,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+
+If you want to see the list of  created index, here is the following command.
+
+> db.system.indexes.find();
+{ "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "empinfo.empinfo" }
+{ "v" : 1, "key" : { "emp_id" : 1 }, "name" : "emp_id_1", "ns" : "empinfo.empinfo" }
+
+
+
+
+
+>db.userdetails.find({"education":"M.C.A."},{"user_id" : 0}).pretty();
+>db.userdetails.find().sort({"education":1,"password":-1})
+>db.userdetails.find().limit(2).pretty();
+>db.userdetails.find().skip(2).pretty();
+
+>db.userdetails.find({"date_of_join" : "16/10/2010","education":"M.C.A."}).sort({"profession":-1}).pretty();
+>db.userdetails.find({
+                      $query : {"date_of_join" : "16/10/2010","education":"M.C.A."}, 
+                      $orderby : {"profession":-1}
+                     }).pretty();
+
+
+> db.restaurants.createIndex( { "cuisine": 1 , "address.zipcode": -1 } );
+{
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 2,
+        "numIndexesAfter" : 3,
+        "ok" : 1
+}
+
+
+db.restaurants.distinct( "cuisine" );
+
+db.restaurants.distinct( "address.zipcode" , { "cuisine" : "Delicatessen" } );
+db.restaurants1.findAndModify({
+    query: { "name" : "Douglaston Club" },
+    sort: { cuisine: 1 },
+    update: { $inc: { "age": 1 } },
+});
+db.restaurants1.findAndModify({
+    query: { "name" : "Douglaston Club" },
+    sort: { cuisine: 1 },
+    update: { $inc: { "age": 1 } },
+    new : true
+});
+
+db.invoice.save( { _id: 1001,inv_no: "I00015", inv_date: "15/10/2012", ord_qty:500 } );
+

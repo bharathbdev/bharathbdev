@@ -1,0 +1,824 @@
+Execution Context
+   memory code
+
+js i ssynchronuos and single threaded programming language
+
+Hoisting is a concept which enables us to extract values of variables and functions even before
+initialising/assigning value without getting error and this is happening due to the 1st phase (memory
+creation phase) of the Execution Context.
+
+Gloabal Execution Context
+
+ Lexical Environment = local memory + lexical env of its parent. Hence, Lexical Environement is
+the local memory along with the lexical environment of its parent
+
+Block aka compound statement is used to group JS statements together into 1 group
+
+ A function along with reference to its outer environment together forms a closure. Or in other words, A
+Closure is a combination of a function and its lexical scope bundled together.
+
+
+Advantages of Closure:
+Module Design Pattern
+Currying
+Memoize
+Data hiding and encapsulation
+setTimeouts etc.
+Disadvantages of Closure:
+Over consumption of memory
+Memory Leak
+Freeze browser
+
+
+
+Another is the Local Scope, variables declared inside the functions are considered to be of the local scope and it is futher divided into function scoped and block scoped.
+
+
+Function Scope: When a variable is declared inside a function, it is only accessible within that function and cannot be used outside that function.
+
+Block Scope: A variable when declared inside the if or switch conditions or inside for or while loops, are accessible within that particular condition or loop. To be consise the variables declared inside the curly braces are called as within block scope.
+
+
+
+
+
+
+
+
+
+
+
+Use closures for data abstraction
+function attachEventList() { //creating new function for closure
+ let count = 0;
+ document.getElementById("clickMe").addEventListener("click",
+function xyz(){ 
+ console.log("Button clicked", ++count); //now callback
+function forms closure with outer scope(count)
+});
+}
+attachEventList()
+
+
+
+
+function outest() {
+ var c = 20;
+ function outer(str) {
+ let a = 10;
+ function inner() {
+ console.log(a, c, str);
+ }
+ return inner;
+ }
+ return outer;
+}
+outest()("Hello There")(); // 10 20 "Hello There"
+
+
+
+
+Function statement/ Declaration 
+function a() {
+ console.log("Hello");
+}
+
+Function Expression
+var b = function() {
+ console.log("Hello");
+}
+
+
+call back
+
+function printStr(str, cb) {
+ setTimeout(() => {
+ console.log(str);
+ cb();
+ }, Math.floor(Math.random() * 100) + 1)
+}
+function printAll() {
+ printStr("A", () => {
+ printStr("B", () => {
+ printStr("C", () => {})
+ })
+ })
+}
+printAll() 
+
+
+eventloop
+callback queue
+
+
+Callback functions that come through promises and mutation observer go inside Microtask Queue.
+
+ JS has something called Just-in-time(JIT) Compilation - uses both interpreter &
+compiler. Also compilation and execution both go hand in hand. The AST from previous step
+goes to interpreter which converts hi-level code to byte code and moves to execeution. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Array.prototype.calculate = function(operation) {
+ const output = [];
+ for (let i = 0; i < this.length; i++) {
+ output.push(operation(this[i]));
+ } 
+ return output;
+}
+console.log(radiusArr.calculate(area))
+
+
+
+
+
+const output = arr.reduce((acc, current) => {
+if (current > acc ) {
+acc = current; 
+}
+return acc;
+}, 0);
+console.log(output); // 6
+
+
+
+
+
+
+
+Callback Hell:
+ Callback Hell is essentially nested callbacks stacked below one another forming a pyramid structure.
+
+
+A Promise is an object that represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+
+
+in calback we will be calling another callback function
+in promise we will be attaching another callback function 
+
+
+createOrder.then()
+            .then()
+            .catch("if any error in above thens then i will catch it")
+             .then("I will be executed always ")
+             .catch("generic catch")
+
+
+promise.all
+const p2 = Promise.all([1, 2, 3, Promise.resolve(444)]);
+const p3 = Promise.all([1, 2, 3, Promise.reject(555)]);
+
+promise.allSettled
+The Promise.allSettled() method returns a promise that fulfills after all of the given promises have 
+either fulfilled or rejected, with an array of objects that each describes the outcome of each promise.
+
+promise.any
+Promise.any() takes an iterable of Promise objects. 
+It returns a single promise that fulfills as soon as any of the promises in the iterable fulfills, 
+with the value of the fulfilled promise. If no promises in the iterable fulfill 
+(if all of the given promises are rejected), 
+then the returned promise is rejected with an AggregateError,
+ a new subclass of Error that groups together individual errors.
+
+promise.race
+The Promise.race() method returns a promise that fulfills or rejects as soon as one of 
+the promises in an iterable fulfills or rejects, with the value or reason from that promise.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Comparison with Promise.any
+Promise.race takes the first settled Promise.
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, "one");
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 100, "two");
+});
+
+Promise.race([promise1, promise2])
+  .then((value) => {
+    console.log("succeeded with value:", value);
+  })
+  .catch((reason) => {
+    // Only promise1 is fulfilled, but promise2 is faster
+    console.error("failed with reason:", reason);
+  });
+// expected output: "failed with reason: two"
+Copy to Clipboard
+Promise.any takes the first fulfilled Promise.
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 500, "one");
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 100, "two");
+});
+
+Promise.any([promise1, promise2])
+  .then((value) => {
+    // Only promise1 is fulfilled, even though promise2 settled sooner
+    console.log("succeeded with value:", value);
+  })
+  .catch((reason) => {
+    console.error("failed with reason:", reason);
+  });
+// expected output: "succeeded with value: one"
+
+
+
+
+
+
+<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+<button onclick="this.innerHTML = Date()">The time is?</button>
+<button onclick="displayDate()">The time is?</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let part = str.slice(7, 13);
+let newText = text.replace(/Microsoft/gi, "W3Schools");
+let char = text.charAt(0); or text[0]
+let char = text.charCodeAt(0);
+text.split("")
+
+let number = str.indexOf("locate", 15);
+let number = str.lastIndexOf("locate", 15);
+let array = text.match(/ain/g);
+let bool = text.includes("world");
+
+
+
+
+let type = typeof fruits;
+Array.isArray(fruits);
+fruits instanceof Array;
+let joinedstring = fruits.join(" * ");
+
+let deltedeelmentsarray = fruits.splice(2, 0, "Lemon", "Kiwi");
+const citrusarray = fruits.slice(1, 3);
+
+ let maxnumber = Math.max.apply(null, arr);
+
+let position = fruits.indexOf("Apple") + 1;
+
+
+let array = Array.from("ABCDEFG");
+
+
+
+
+
+
+
+normal function this
+
+With a regular function this represents the object that calls the function:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript "this"</h1>
+
+<p>This example demonstrate that in a regular function, the "this" keyword represents different objects depending on how the function was called.</p>
+
+<p>Click the button to execute the "hello" function again, and you will see that this time "this" represents the button object.</p>
+
+<button id="btn">Click Me!</button>
+
+<p id="demo"></p>
+
+<script>
+let hello = "";
+
+hello = function() {
+  document.getElementById("demo").innerHTML += this;
+}
+
+//The window object calls the function:
+window.addEventListener("click", hello);
+
+//A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello);
+</script>
+
+</body>
+</html>
+
+
+
+
+arrow function this
+
+With an arrow function this represents the owner of the function:
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript "this"</h1>
+
+<p>This example demonstrate that in Arrow Functions, the "this" keyword represents the object that owns the function, no matter who calls the function.</p>
+
+<p>Click the button to execute the "hello" function again, and you will see that "this" still  represents the window object.</p>
+
+<button id="btn">Click Me!</button>
+
+<p id="demo"></p>
+
+<script>
+let hello = "";
+
+hello = () => {
+  document.getElementById("demo").innerHTML += this;
+}
+
+//The window object calls the function:
+window.addEventListener("click", hello);
+
+//A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age(x) {
+    return x - this.year;
+  }
+}
+
+
+
+
+JSON stands for JavaScript Object Notation
+
+
+
+
+
+getter
+
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "en",
+  get lang() {
+    return this.language.toUpperCase();
+  }
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+
+
+
+setter
+
+
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "",
+  set lang(lang) {
+    this.language = lang.toUpperCase();
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+
+
+
+
+both custom
+
+// Define object
+const obj = {counter : 0};
+
+// Define setters and getters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+
+// Play with the counter:
+obj.reset;
+obj.add = 5;
+obj.subtract = 1;
+obj.increment;
+obj.decrement;
+
+
+
+
+
+
+
+constructor function
+
+
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+
+// Create 2 Person objects
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+
+// Add a name method to first object
+myFather.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Person(firstName, lastName, age, eyeColor) {
+  this.firstName = firstName; 
+  this.lastName = lastName;
+  this.age = age;
+  this.eyeColor = eyeColor;
+  this.changeName = function (name) {
+    this.lastName = name;
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.name = function() {
+    return this.firstName + " " + this.lastName;
+  };
+}
+
+
+
+
+
+
+
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.nationality = "English";
+
+
+
+
+
+
+
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+
+
+
+
+
+
+
+
+Object.defineProperty(person, "language", {value : "NO"});
+
+Object.defineProperty(person, "language", {writable:false});
+
+
+
+
+
+
+
+
+
+Object.preventExtensions(object)
+
+// Returns true if properties can be added to an object
+Object.isExtensible(object)
+
+// Prevents changes of object properties (not values)
+Object.seal(object)
+
+// Returns true if object is sealed
+Object.isSealed(object)
+
+// Prevents any changes to an object
+Object.freeze(object)
+
+// Returns true if object is frozen
+Object.isFrozen(object)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+x = findMax(1, 123, 500, 115, 44, 88);
+
+function findMax() {
+  let max = -Infinity;
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] > max) {
+      max = arguments[i];
+    }
+  }
+  return max;
+}
+
+
+
+
+
+
+
+
+
+buz.hasOwnProperty(name)
+
+
+
+
+
+
+
+
+
+const person = {
+  isHuman: false,
+  printIntroduction: function() {
+    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  }
+};
+
+const me = Object.create(person);
+
+me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+me.isHuman = true; // inherited properties can be overwritten
+
+me.printIntroduction();
+
+
+
+
+
+
+
+
+
+
+
+
+const o1 = { a: 1 };
+const o2 = { b: 2 };
+const o3 = { c: 3 };
+
+const obj = Object.assign(o1, o2, o3);
+console.log(obj); // { a: 1, b: 2, c: 3 }
+console.log(o1);  // { a: 1, b: 2, c: 3 }, target object itself is changed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Node JS applications uses “Single Threaded Event Loop Model” architecture to 
+handle multiple concurrent clients.
+JSP, Spring MVC, ASP.NET, HTML, Ajax, jQuery etc. But all these technologies follow “Multi-Threaded Request-Response” architecture to handle multiple concurrent clients.
+
+
+
+
+
+REST is an architecture that’s more data-driven,
+ while SOAP is a standardized protocol for transferring structured information that’s more function-driven.
+
+
+soap only xml rest json and xml 
+sopa used when security is needed since it uses ssl and wl but rest ssl and https
+
+
+
+
+
+The middleware in node.js is a function that will have all the access for requesting an object, responding to an object, and moving to the next middleware function in the application request-response cycle.
+
+
+custom middleware 
+
+const express = require('express')
+const cookieParser = require('cookie-parser')
+const cookieValidator = require('./cookieValidator')
+
+const app = express()
+
+async function validateCookies (req, res, next) {
+  await cookieValidator(req.cookies)
+  next()
+}
+
+app.use(cookieParser())
+
+app.use(validateCookies)
+
+// error handler
+app.use((err, req, res, next) => {
+  res.status(400).send(err.message)
+})
+
+app.listen(3000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is CORS?
+CORS stands for Cross-Origin Resource Sharing. It allows us to relax the security applied to an API. This is done by bypassing the Access-Control-Allow-Origin headers, which specify which origins can access the API.
+
+
+const cors = require('cors');
+app.use(cors({
+    origin: ['https://www.section.io', 'https://www.google.com/']
+}));
+
+
+
+
+
+
+
+
+
+
+
+
+A monolithic application is built as a single unified unit while a microservices architecture is a collection of smaller, independently deployable services.
+
+
+
+
+
+
+
+
+
+js is syncronous 
+create - POST
+read - GET
+create or update - PUT
+delete - DELETE
+update - PATCH
+
+
+200 sucess
+204 no data
+400 bad request
+404 not found
+401 unauthorized
+500 internal server error
