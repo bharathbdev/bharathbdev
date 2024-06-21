@@ -76,3 +76,30 @@ test()
 // c.count()
 // console.log(d.count());
 // console.log((true + false) > 2 + true);
+const arr = [10, 20, 30]
+
+// for (let i = 0; i < arr.length; i++) {
+    
+//         console.log(i, arr, arr[i], arr.length);
+    
+// }
+
+// for (var i = 0; i < arr.length; i++) {
+//     setTimeout(function () {
+//         console.log(i, arr, arr[i], arr.length);
+//     }, 3000)
+// }
+
+
+// for (let i = 0; i < arr.length; i++) {
+//     setTimeout(function () {
+//         console.log(i, arr, arr[i], arr.length);
+//     }, 3000)
+// }
+
+// for (var i = 0; i < arr.length; i++) {
+//     setTimeout( () =>{
+//         console.log(i, arr, arr[i], arr.length);
+//     }, 3000)
+// }
+
