@@ -1,0 +1,238 @@
+Introduce Yourself
+I am Sangeetha. I completed my computer science engineering from BMSIT and I am from Bangalore. 
+I have around 3+ years of experience. I worked in a company Mineigma mainly as a backend developer.
+Technologies I worked with are Node.js, mainly Express.js, JavaScript, and I worked more with NoSQL (MongoDB) and a little in PostgreSQL in my personal projects. 
+ 
+
+
+
+1. 
+
+I worked on a leave management system application. 
+Basically, I was involved in creating APIs for authentication, applying for leaves, and approving leaves.
+ I used Node.js that is  specifically Express here and an SQL database. 
+For authentication, I used JWT tokens. 
+
+
+
+
+gfdsa
+
+I created JWT when logging in and verified that whenever they made other API alls like apply or approval. 
+Also, I handled authorization roles (manager and user) 
+
+along with I learned how to write clean code like naming convention .
+.
+
+
+
+What did you use in SQL?
+Basic SQL operations like INSERT, SELECT, UPDATE, DELETE. I created tables, foreign key joins.
+
+Explain your application.
+It is a leave management system with features like registering employees, login, applying for leave, approving leave, listing holidays, checking attendance, regularization, and others.
+ I was involved in authentication and applying and approving leaves.
+
+What technology did you use?
+Node.js, Express.js,  (PostgreSQL).
+
+
+
+2.
+
+I worked on developing a service named EDc (event data collector) 
+which collects information about local events like concerts, conferences, and exhibitions, stores it in a DB, and exposes the API to clients.
+
+ Basically, we had a data analyst team that used to get this information from different sources using  crawling and store them in an Excel file in S3 on a daily basis by using an upload API.
+
+My role was to get that Excel from S3 using AWS-SDK, convert that Excel to JSON, and store it in the DB so that FE team will call this api to display those details in UI. 
+Now the data analyst team will look into these events in UI and if any modifications are needed they will do it in UI by using the edit API.
+Once everything is done, we expose one GET API to the client to get all the details after modification. 
+z
+ Since it is a daily process, we create a cron job in the backend which will run daily at a specific time to get files from S3, convert them to JSON, and store them in the DB.
+
+Technologies used:
+
+AWS SDK and S3 multer npm package to upload and get files from S3.
+ExcelJS npm package to convert excel files to JSON.
+Node-cron npm package to create a cron job or scheduler.
+Technology used:
+Node.js, Express.js, MongoDB 
+
+
+
+3
+I worked on the PAT application (pricing analytics tool external client ), 
+which is related to the printer domain. Basically, we have a UI where users can see a list of printers, and they have the option to compare any 2 printers.
+
+ So from FE, when they click on compare button , they used to send these 2 printer details in API like print type, speed, model, refill capacity, etc.
+
+Now in the backend, we have 2 teams, one is the dev team where I worked and another is the MLOps team. 
+The MLOps team is responsible for suggesting a better printer by considering many criteria and models. They will return throughput value, 
+and based on that we decide which is better and send that to UI.
+So basically I worked on modifying the data that I received from FE and sent that data to MLOps via MLOps API which is provided by the MLOps team. 
+Then they will return throughput value. Based on this throughput, I will suggest which is better and send it to UI.
+
+Technologies used:
+Node.js, Express, MongoDB, Docker.
+
+You mentioned AWS in your resume, where did you use AWS Secret Manager?
+I used them to store DB passwords.
+
+You said integrating API in FE, what is it?
+The API which I created I integrated that API in FE using Angular HttpClient service.
+
+You said Docker, what did you do with it?
+I created a Docker image for my backend application by using Docker build command, pushed it to Docker Hub, and downloaded the image and ran it locally using Docker run.
+
+
+
+What was the challenging task in your career?
+I wouldn't say challenging, but it was interesting for me. 
+In one of my projects, i.e., EDS (event data collector), manual testers needed to verify the data daily by checking the UI.
+ It was a very tedious process, so since I knew about the data and API, I started to write a script (means code) in Postman 
+and wrote all validations that they used to do manually in FE. 
+Then I created a collection runner and also I created a Postman scheduler and scheduled a specific time to run this API and also send the report to the manual testers' mail ID. 
+This made the manual testers' job easy, so they just need to see this report and do high-level validation if needed.
+ Basically, I did some automation scripting using JavaScript.
+
+Why TCS/Why job change?
+Basically, I started my career in the same company and learned many things related to Node and DB.
+ Now I believe it's time to explore more opportunities to build my career and for a good package. 
+In big MNCs, I will get good projects and exposure to learning from a good team, so I would like to work here.
+
+Did you increase any performance/scaling of API or DB?
+Yes, I know we can improve performance by creating index and by sharding, replica, AWS load balancer, etc.
+ But I used index in one of my projects, i.e., EDS,
+ where I created an index on one of the tables. 
+Earlier it was taking 15 seconds, after indexing it took 5 seconds since it has huge data.
+
+
+
+
+
+
+
+
+
+
+
+Can you rate how good you are on a scale of 10?
+For JavaScript: 8
+For TypeScript: 8
+For Node.js: 8
+For HTML and CSS: 5
+For SQL: 5
+For MongoDB: 8
+
+Did you work with TypeScript?
+Yes, in one project.edsa I run by tsc filename.ts and node filename.js.
+
+
+
+In Node.js, which frameworks do you know and have worked with?
+Express.js; other frameworks are Nest.js.
+
+Which version control tool did you use?
+Git, both GitHub and Bitbucket.
+
+How did you deploy your application? nod devops
+Using Jenkins. Basically, the DevOps team used to do it. I used to just check pipelines and jobs whenever I created a merge request.
+
+Did you write unit tests?
+Yes, mainly for the service layer using Jest.
+
+Which architecture do you follow?
+Microservice architecture. In that, MVC (Model View Controller) - first controller, then service, then DB layer.
+
+Which tool did you use to test your API?
+Postman.
+
+Did you write SQL queries?
+Not much. I know basic queries like INSERT, GET, DELETE, UPDATE, and aggregation queries, foreign key join. Since I worked more in MongoDB, I am familiar with aggregation queries using pipeline, but I know SQL concepts.
+
+Did you work on the front end?
+Not much, but I worked on fixing a few minor bugs and API integration using Angular HttpClient. I have basic knowledge of CSS and HTML.
+
+
+
+
+What is your strength?
+I always love to learn new things and upgrade myself daily.
+
+What is your weakness?
+Not much physical activity, I need to be fit.
+
+What is your notice period?
+July 26th is my last date. I am serving the notice period.
+
+Minemigma is a prodyct- service-based company
+
+
+Do you have any questions for us?
+I would like to know about my career in your company. 
+I mean, information about the project where I will be added, the technologies, and my role.
+If you can provide these details, that would be great.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expalin how nodejs works
+
+first, we need to know 
+other langauage work on request-response cycle means for ecah request theree will be seaparete threas that is multi thread
+but nodejs is  single thred and works on event-driven architecture.
+nodejs is build on v8 engine and libuv
+Now lets assume client is making 2 API request 
+one is request1 which is synchronous like complex arithmetic operation or processing image
+another request is request2 which is asynchronous like checking username and password  from db 
+
+
+First both the request comes to event queue then
+event loop will check whether callstack/main thread is empty or not
+if it's empty it will pull the request1 in to call the stack
+now call stack will check whether request1 is syncrounous or asynchronous,
+ since the request1 is synchronous it will be handled by main thread  and send response to client
+
+
+now we have request2 sitting in event queue, again event loop will check whether call stack is empty or not 
+if its empty it will pull request2 in to call stack
+now again call stack will check whether request1 is syncronous or asynchronous,
+ since request2 is asynchronous callstack will assign this request2 to one of the internal thread which is available in thread loop provided by libuv
+  lets assume now request2 is assigned to thread1 
+  now thread1 will communicate with database, saying please check the username and password and once you are done please send the callback to callback queue with "valid message" 
+so new thread1 will be free 
+ now after some time once the db verify the username and password it will send callback to the callback queue
+ now event loop will check whether the call stack is free or not, if its free it will pull this callback form callback queeue and send to the client as response
+
+
+additional things to remember 
+     there will be 2 callback queue
+           Microtask and macro task queue
+  all the callback and timers like settimeout setinterval comes to macro task queue
+  all the promises, fetch api comes to microtask queue
+among these 2, micro task queue has high priority 
+
+in this way , nodejs can handle multiple request asynchronously and non blocking even though it is single threaded.

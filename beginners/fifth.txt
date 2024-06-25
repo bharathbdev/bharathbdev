@@ -1,0 +1,10 @@
+type of
+type conversion
+destructuring - json stringigy
+rest and
+spread operator
+class
+error - try,catch,finally
+break
+continou
+switch

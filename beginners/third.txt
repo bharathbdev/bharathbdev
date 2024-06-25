@@ -1,0 +1,11 @@
+object declaration 
+nested object declaration
+Three types of for loop
+1.for loop (index with values old method)
+2.for/of(print values )
+3.for/in(print index)
+4.for each (arrow function) - new
+5.for each (normal function) - 2015
+object.entries()
+ object inside function
+

@@ -1,0 +1,7 @@
+functions
+global and local scope
+function syntax 
+parameter
+how to call function 
+how to pass arguments
+return 
