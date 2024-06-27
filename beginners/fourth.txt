@@ -1,9 +1,0 @@
-date
-math
-random
-boolean
-comparison
-ternary operator
-number 
-nymber method
-number properties
