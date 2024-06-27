@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const cors = require('cors');
 // Custom Middleware function
 const customMiddleware = (req, res, next) => {
     // Perform some actions before the route handler
@@ -15,7 +15,11 @@ const customMiddleware = (req, res, next) => {
 
 // Middleware applied to all routes
 app.use(customMiddleware);
-
+app.use(cors({
+    origin: 'http://example.com', // Allow requests from a specific origin
+    methods: 'GET,POST', // Allow only specified HTTP methods
+    allowedHeaders: 'Content-Type,Authorization', // Allow only specified headers
+}));
 // Route with custom middleware
 app.get('/protected', customMiddleware, (req, res) => {
     // Access the modified request object
