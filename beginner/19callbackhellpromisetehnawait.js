@@ -1,165 +1,96 @@
-function firstFunction(callback) {
-    setTimeout(() => {
-        console.log('First function done');
-        callback();
-    }, 1000);
+
+function firstFunction(callback1) {
+    console.log("11111")
+    callback1();
+
 }
 
-function secondFunction(callback) {
-    setTimeout(() => {
-        console.log('Second function done');
-        callback();
-    }, 1000);
+function secondFunction(callback2) {
+    console.log("22222")
+    callback2();
+
 }
 
-function thirdFunction(callback) {
-    setTimeout(() => {
-        console.log('Third function done');
-        callback();
-    }, 1000);
+function thirdFunction(callback3) {
+    console.log("333")
+    callback3();
+
 }
 
 // Callback hell
-firstFunction(() => {
-    secondFunction(() => {
-        thirdFunction(() => {
-            console.log('All functions done');
-        });
-    });
-});
+firstFunction(
+    () => {
+
+
+        secondFunction(() => {
+
+
+            thirdFunction(() => {
+                console.log('done')
+            })
+        })
+
+
+    }
+);
 
 
 
+const myprise1 = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+        resolve("111111")
+    }, 3000)
+
+})
 
 
+const myprise2 = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+        resolve("2222")
+    }, 3000)
+
+})
 
 
+const myprise3 = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+        resolve("3333")
+    }, 3000)
+
+})
+
+// myprise1.then((value) => {
+
+//     console.log(value)
+//     return myprise2
+
+// }).then((value) => {
+
+//     console.log(value)
+//     return myprise3
+
+// })
+//     .then((value) => {
+
+//         console.log(value)
 
 
+//     })
+// .catch((error) => {
+//     console.log("error insns", error)
+// })
 
 
+async function iwiwiwiiw() {
+    let value1 = await myprise1
+    console.log(value1)
+    let value2 = await myprise2
+    console.log(value2)
+    let value3 = await myprise3
+    console.log(value3)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function firstFunction() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('First function done');
-            resolve();
-        }, 1000);
-    });
 }
-
-function secondFunction() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('Second function done');
-            resolve();
-        }, 1000);
-    });
-}
-
-function thirdFunction() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('Third function done');
-            resolve();
-        }, 1000);
-    });
-}
-
-// Promise chaining
-firstFunction()
-    .then(secondFunction)
-    .then(thirdFunction)
-    .then(() => {
-        console.log('All functions done');
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function firstFunction() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('First function done');
-            resolve();
-        }, 1000);
-    });
-}
-
-function secondFunction() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('Second function done');
-            resolve();
-        }, 1000);
-    });
-}
-
-function thirdFunction() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log('Third function done');
-            resolve();
-        }, 1000);
-    });
-}
-
-// Using async/await
-async function runFunctions() {
-    await firstFunction();
-    await secondFunction();
-    await thirdFunction();
-    console.log('All functions done');
-}
-
-runFunctions();
+iwiwiwiiw()
