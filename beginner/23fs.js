@@ -1,8 +1,8 @@
 const fs = require('fs');
 
 
-    const store = fs.readFileSync('./Sangeetha/data.txt', 'utf8');
-    console.log(store)
+const store = fs.readFileSync('./Sangeetha/data.txt', 'utf8');
+console.log(store)
 
 
 
@@ -13,10 +13,10 @@ const fs = require('fs');
 
 
 fs.readFile('./Sangeeha/data.txt', 'utf8', (err, data) => {
-if(err){
-    console.log("i goite rhkekhjcdedmcmdwcmb")
-}
-console.log(data)
+    if (err) {
+        console.log("i goite rhkekhjcdedmcmdwcmb")
+    }
+    console.log(data)
 
 });
 
@@ -25,24 +25,71 @@ console.log(data)
 
 
 
-const data = fs.createReadStream("./new journey/fourth.txt","utf8")
-data.on("data",(chunk) => {
+const data = fs.createReadStream("./new journey/fourth.txt", "utf8")
+data.on("data", (chunk) => {
 
-console.log(chunk)
+    console.log(chunk)
 
-
-})
-
-data.on("error",(error)=>{
-
-console.log(error)
 
 })
 
-data.on("end",()=>{
+data.on("error", (error) => {
+
+    console.log(error)
+
+})
+
+data.on("end", () => {
     console.log("finished")
 })
 
+
+
+
+const fs = require('fs');
+
+try {
+    fs.writeFileSync('./new journey/fifth.txt', 'This is the content for the fifth file.\nThis is the second line.');
+    console.log('File written successfully');
+} catch (error) {
+    console.error(error);
+}
+
+
+
+const fs = require('fs');
+
+fs.writeFile('./new journey/fifth.txt', 'This is the content for the fifth file.\nThis is the second line.', 'utf8', (error,data) => {
+    if (error) {
+        console.error(error);
+        return;
+    }
+    console.log('File written successfully');
+});
+
+
+
+const fs = require('fs');
+
+// Create a write stream
+const writeStream = fs.createWriteStream("./new journey/fifth.txt", "utf8");
+
+// Write data to the file
+writeStream.write("This is the first line.\n");
+
+
+// Handle the 'finish' event
+writeStream.on("finish", () => {
+    console.log("Write finished");
+});
+
+// Handle the 'error' event
+writeStream.on("error", (error) => {
+    console.log(error);
+});
+
+// End the write stream
+writeStream.end();
 
 
 
