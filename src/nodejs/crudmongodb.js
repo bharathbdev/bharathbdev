@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
+const { ObjectId } = require('mongodb');
 
 const app = express();
 const port = 3000;
@@ -53,7 +54,8 @@ client.connect()
 
         // Read a single record
         app.get('/api/records/:id', (req, res) => {
-            const recordId = new mongodb.ObjectID(req.params.id);
+            const recordId = new ObjectId(req.params.id);
+
             collection.findOne({ _id: recordId })
                 .then(record => {
                     if (!record) {
@@ -70,7 +72,7 @@ client.connect()
 
         // Update a record
         app.put('/api/records/:id', (req, res) => {
-            const recordId = new mongodb.ObjectId(req.params.id);
+            const recordId = new ObjectId(req.params.id);
             const updatedRecord = req.body;
             collection.findOneAndUpdate(
                 { _id: recordId },
@@ -86,7 +88,7 @@ client.connect()
 
         // Delete a record
         app.delete('/api/records/:id', (req, res) => {
-            const recordId = new mongodb.ObjectId(req.params.id);
+            const recordId = new ObjectId(req.params.id);
             collection.deleteOne({ _id: recordId })
                 .then(() => res.sendStatus(204))
                 .catch(err => {
